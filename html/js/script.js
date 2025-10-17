@@ -22,14 +22,34 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Contact Form Submission
-    const contactForm = document.getElementById('contactForm');
     if (contactForm) {
         contactForm.addEventListener('submit', function (e) {
             e.preventDefault();
-            showNotification('Thank you for your message! We will get back to you soon.', 'success');
+    
+            const name = this.querySelector('input[placeholder="Your Name"]').value;
+            const email = this.querySelector('input[placeholder="Your Email"]').value;
+            const subject = this.querySelector('input[placeholder="Subject"]').value;
+            const message = this.querySelector('textarea').value;
+    
+            const phoneNumber = '919651107500'; // your WhatsApp number
+            const whatsappMessage = `📩 *New Contact Message - BanarasExpress Cabs*
+    
+    👤 *Name:* ${name}
+    📧 *Email:* ${email}
+    📝 *Subject:* ${subject || 'N/A'}
+    💬 *Message:* ${message}
+    
+    _Contact via website form_`;
+    
+            const encodedMessage = encodeURIComponent(whatsappMessage);
+            const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+            window.open(whatsappURL, '_blank');
+    
+            showNotification('Your message has been sent via WhatsApp!', 'success');
             this.reset();
         });
     }
+    
     
 
     // Smooth scrolling for anchor links
