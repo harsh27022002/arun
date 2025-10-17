@@ -123,20 +123,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }
  
 
-    // Open modal from "Book Now" buttons in destination cards
+ /*    // Open modal from "Book Now" buttons in destination cards
     document.querySelectorAll('.destination-actions .btn:not(.btn-outline)').forEach(button => {
         button.addEventListener('click', function (e) {
             e.preventDefault();
             window.location.href = 'tel:+919651107500';
             // openBookingModal();
         });
-    });
+    }); */
 
     // Open modal from car "Call Now" buttons
     document.querySelectorAll('.call-car-btn').forEach(button => {
         button.addEventListener('click', function (e) {
             e.preventDefault();
-            openBookingModal();
+            // openBookingModal();
+            window.location.href = 'tel:+919651107500';
         });
     });
     document.querySelectorAll('.learnMoreForm').forEach(button => {
